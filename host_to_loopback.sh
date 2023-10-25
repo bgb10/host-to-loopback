@@ -38,5 +38,3 @@ do
             ;;
     esac
 done
-
-dscacheutil -flushcache
