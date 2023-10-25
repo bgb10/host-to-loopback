@@ -12,11 +12,11 @@ do
         a) 
             url=$OPTARG
             new_line="127.0.0.1\t$url"
-            
+
             if grep -q "$new_line" /etc/hosts; then
                 echo "Line for $url already exists in /etc/hosts. No changes made."
             else
-                echo -e "$new_line" | sudo tee -a /etc/hosts > /dev/null
+                echo "$new_line" | sudo tee -a /etc/hosts > /dev/null
                 echo "Line added for $url in /etc/hosts."
             fi
             ;;
@@ -38,3 +38,5 @@ do
             ;;
     esac
 done
+
+dscacheutil -flushcache
